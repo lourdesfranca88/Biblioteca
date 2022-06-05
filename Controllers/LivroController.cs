@@ -14,20 +14,23 @@ namespace Biblioteca.Controllers
         [HttpPost]
         public IActionResult Cadastro(Livro l)
         {
-            LivroService livroService = new LivroService();
 
-            if(l.Id == 0)
-            {
-                livroService.Inserir(l);
-            }
-            else
-            {
-                livroService.Atualizar(l);
-            }
+          
 
-            return RedirectToAction("Listagem");
+           LivroService livroService = new LivroService();
+
+          if(l.Id == 0)
+          {
+              livroService.Inserir(l);
+          }
+          else
+          {
+             livroService.Atualizar(l);
+          }
+           
+           return RedirectToAction("Listagem");
         }
-
+        
         public IActionResult Listagem(string tipoFiltro, string filtro)
         {
             Autenticacao.CheckLogin(this);
